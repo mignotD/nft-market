@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple NFT Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#6366F1',
+                        dark: {
+                            bg: '#181818',
+                            card: '#252525',
+                            text: '#E5E5E5'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body
+    class="antialiased bg-white dark:bg-dark-bg text-gray-800 dark:text-dark-text min-h-screen transition-colors duration-300">
+    <div class="container mx-auto px-4 py-6">
+        <!-- Header -->
+        <header class="mb-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <h1 class="text-3xl font-bold text-primary mb-4 md:mb-0">NFT Marketplace</h1>
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Search NFTs..."
+                            class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-dark-card focus:outline-none focus:ring-2 focus:ring-primary w-full md:w-64 text-base">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <button id="wallet-btn"
+                        class="bg-primary hover:bg-secondary text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300">
+                        Connect Wallet
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Filters -->
+        <div class="mb-8 flex flex-wrap gap-3">
+            <button class="bg-primary text-white px-4 py-2 rounded-lg">All</button>
+            <button
+                class="bg-gray-200 dark:bg-dark-card hover:bg-gray-300 dark:hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">Art</button>
+            <button
+                class="bg-gray-200 dark:bg-dark-card hover:bg-gray-300 dark:hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">Collectibles</button>
+            <button
+                class="bg-gray-200 dark:bg-dark-card hover:bg-gray-300 dark:hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">Games</button>
+            <button
+                class="bg-gray-200 dark:bg-dark-card hover:bg-gray-300 dark:hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">Music</button>
+        </div>
+
+        <!-- NFT Grid -->
+        <div id="nft-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- NFT Cards will be added here -->
+        </div>
+    </div>
+
+    <!-- NFT Detail Modal -->
+    <div id="nft-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 p-4">
+        <div class="bg-white dark:bg-dark-card rounded-xl max-w-lg w-full max-h-[90vh] overflow-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 id="modal-title" class="text-2xl font-bold"></h2>
+                    <button id="close-modal"
+                        class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div id="modal-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast"
+        class="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300">
+        Transaction successful!
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

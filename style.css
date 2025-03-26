@@ -1,0 +1,53 @@
+/* Custom styles beyond Tailwind */
+
+/* Animations for toast */
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* NFT card hover effect */
+.nft-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.nft-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Modal animation */
+.modal-enter {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Like button effect */
+.like-button {
+    transition: transform 0.2s ease;
+}
+
+.like-button:active {
+    transform: scale(1.2);
+}
+
+/* Ensure NFT images maintain aspect ratio */
+.nft-img {
+    aspect-ratio: 1 / 1;
+}
